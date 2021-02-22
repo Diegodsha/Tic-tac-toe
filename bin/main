@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative "../lib/board.rb"
+
 # introduction
 puts 'TIC-TAC-TOE'
 puts "\nWELCOME TO THIS VERY ADDICTIVE AND FUN GAME"
@@ -36,6 +38,10 @@ puts "\nLet's get ready to rumbleeeee!".upcase
 # show the board
 
 puts "\nCURRENT PLAYER start the game, make your move"
+
+
+displplay_board = Board.new
+displplay_board.show_board
 
 # make current player move
 
