@@ -10,4 +10,9 @@ class Board
         puts "-----------"
         puts "#{@board[6] = 7} | #{@board[7] = 8} | #{@board[8] = 9}"
     end
-end
+
+    def player_moves(input)
+    @new_board[input] = @player1
+    end
+
+    end
