@@ -33,17 +33,59 @@ puts "\n#{player_one} your mark will be #{mark_one}, #{player_two} your mark wil
 # start the game with an option to reset the game
 puts "\nLet's get ready to rumbleeeee!".upcase
 
-# show the board
+# game = TicTacToe.new(player_one, player_two,mark_one,mark_two)
 
-puts "\nCURRENT PLAYER start the game, make your move"
+current_player = player_one
 
-# make current player move
+puts "\n#{current_player} starts the game"
 
-# check if game is a tie or end
-# if game end show noard and winner message
-# if game tie show board and tie message
+game_start = true
 
-# if not change player
+while game_start == true
 
-# option to play again
-# reset the game if Y
+  board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  puts "#{board[0]} | #{board[1]} | #{board[2]}"
+  puts '-----------'
+  puts "#{board[3]} | #{board[4]} | #{board[5]}"
+  puts '-----------'
+  puts "#{board[6]} | #{board[7]} | #{board[8]}"
+
+  puts "#{current_player} make your move between 1..9 "
+
+  move = gets.strip.to_i - 1
+  move_repeated = false
+
+  until move.between?(0, 9) and !move_repeated
+    puts "Remember it's between 1..9"
+    move = gets.strip.to_i - 1
+  end
+
+  # make current player move on board
+  # game.player_moves(move)
+  #--------------------------------------------------------------------------
+
+  game_finish = [false, true] # game_finish variable for testing functionality
+  tie = [true, false].sample
+  if game_finish and tie
+    puts "it's a tie"
+    game_start = false
+  elsif game_finish and !tie
+    puts "the winner is #{current_player}"
+    game_start = false
+  end
+  # check if game is a tie or end
+  # if game end show noard and winner message
+  # if game tie show board and tie message
+  #-----------------------------------------------------------------------------
+
+  # if not change player
+  if current_player == player_one
+    current_player = player_two
+  elsif current_player == player_two
+    current_player = player_one
+  end
+  #-----------------------------------------------------------------------------
+  # option to play again
+  # reset the game if Y
+end
