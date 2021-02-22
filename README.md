@@ -22,14 +22,14 @@ TODO: imporve info and intructions
 
 ### Instructions
 
-The first player enters a name and selects either 'X' or 'O'
-The second player is automatically assigned the other marker after they enter a name
-Each player has to select an available position on the display grid for their marker.
-Enter the number visible on the grid to place your marker.
-Once a number is selected hit Enter & X / O will appear on the board
-Players take turns selecting their preferred positions to make a winning move
-The game ends when one of the payers gets a full row or column with his mark or
-in a tie if both players can not win and the borad is full.
+*The first player enters a name and selects either 'X' or 'O'
+*The second player is automatically assigned the other marker after they enter a name
+*Each player has to select an available position on the display grid for their marker.
+*Enter the number visible on the grid to place your marker.
+*Once a number is selected hit Enter & X / O will appear on the board
+*Players take turns selecting their preferred positions to make a winning move
+\*The game ends when one of the players gets a full row, column or diagona line with his mark or
+in a tie if both players cannot win and the borad is full.
 
 ## Built With
 
@@ -39,8 +39,8 @@ in a tie if both players can not win and the borad is full.
 
 ### Rashad Muntar
 
-- GitHub: [@Rashad](https://github.com/Rashad-Muntar)
-- Twitter - [@Rashad](https://twitter.com)
+- GitHub: [@Rashad-Muntar](https://github.com/Rashad-Muntar)
+- Twitter - [@RashadToure](https://twitter.com/RashadToure)
 
 ### Diego Hernandez
 
