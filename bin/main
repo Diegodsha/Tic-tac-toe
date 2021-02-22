@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/board.rb"
+require_relative '../lib/board'
+require_relative '../lib/game_logic'
 
 # introduction
 puts 'TIC-TAC-TOE'
@@ -19,7 +20,7 @@ until %w[X O].include?(mark_one)
   puts 'Hey! remember is either X or O'
   mark_one = gets.chomp.upcase
   if mark_one != 'X' && mark_one != 'O'
-    puts "\nOk I\'ll make it easier for you, just use #{%w[X O].sample} :)"
+    puts "\nOk I\'ll make it easier for you, just use X :)"
     mark_one = 'X'
   end
 end
@@ -35,15 +36,37 @@ puts "\n#{player_one} your mark will be #{mark_one}, #{player_two} your mark wil
 # start the game with an option to reset the game
 puts "\nLet's get ready to rumbleeeee!".upcase
 
-# show the board
+# display_board = Board.new
+#display_board.show_board
 
-puts "\nCURRENT PLAYER start the game, make your move"
-
-
-displplay_board = Board.new
-displplay_board.show_board
+puts "\ncurrent player start the game, make your move"
 
 # make current player move
+
+game = TicTacToe.new(player_one, player_two,mark_one,mark_two)
+
+puts "Enter your move"
+# move = gets.strip.to_i - 1 
+
+def user_key
+  game_start = true
+  while game_start != false
+  input = gets.strip.to_i
+  move = input
+  end
+  game.player_moves(input)
+  
+end
+
+# def move
+#   puts"enter your move"
+#   input = gets.strip.to_i - 1
+#   @board[input] = "x"
+#   display_board.show_board
+# end
+
+# move
+
 
 # check if game is a tie or end
 # if game end show noard and winner message
