@@ -14,49 +14,48 @@ class TicTacToe
   end
 
   def show_board
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
-    puts '-----------'
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
-    puts '-----------'
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
+   %(
+      #{@board[0]} | #{@board[1]} | #{@board[2]}
+      ----------
+      #{@board[3]} | #{@board[4]} | #{@board[5]}
+      ----------
+      #{@board[6]} | #{@board[7]} | #{@board[8]})
+
   end
 
-def win_check?
-   WIN_COMBINATION.each do |arr_winner|
-   if  @board[arr_winner[0]] == @board[arr_winner[1]] && @board[arr_winner[0]] == @board[arr_winner[2]]
-   @game_finish = true
-   elsif draw?
-      @game_finish = true
-   end
-   end
-end
+  def win_check?
+    WIN_COMBINATION.each do |arr_winner|
+      if @board[arr_winner[0]] == @board[arr_winner[1]] && @board[arr_winner[0]] == @board[arr_winner[2]]
+        @game_finish = true
+      elsif draw?
+        @game_finish = true
+      end
+    end
+  end
 
-def draw?
-  if @game_finish && @board.all?{ |val| val.is_a? String}
-   true
-   else
-   false
-   end
-end
+  def draw?
+    if @game_finish && @board.all? { |val| val.is_a? String }
+      true
+    else
+      false
+    end
+  end
 
   def moves(user_input)
-   @board[user_input] = @current_mark
-   win_check?
+    @board[user_input] = @current_mark
+    win_check?
   end
-
 
   def player_switch
     @current_player = @current_player == @player_one ? @player_two : @player_one
   end
 
-def mark_switch
-   @current_mark = @current_mark == @mark_one ? @mark_two : @mark_one
-end
+  def mark_switch
+    @current_mark = @current_mark == @mark_one ? @mark_two : @mark_one
+  end
 
   def spot_taken?(user_input)
-   spot = @board[user_input]
-   %w(X O).include?(spot)
-end
-
-
+    spot = @board[user_input]
+    %w[X O].include?(spot)
+  end
 end
