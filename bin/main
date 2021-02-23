@@ -65,7 +65,7 @@ while game_start == true
   # game.player_moves(move)
   #--------------------------------------------------------------------------
 
-  game_finish = [false, true] # game_finish variable for testing functionality
+  game_finish = [false, true].sample # game_finish variable for testing functionality
   tie = [true, false].sample
   if game_finish and tie
     puts "it's a tie"
@@ -88,4 +88,5 @@ while game_start == true
   #-----------------------------------------------------------------------------
   # option to play again
   # reset the game if Y
+
 end
