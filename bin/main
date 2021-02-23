@@ -41,6 +41,8 @@ puts "\n#{current_player} starts the game"
 
 game_start = true
 
+counter = 0
+
 while game_start == true
 
   board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -60,17 +62,17 @@ while game_start == true
     puts "Remember it's between 1..9"
     move = gets.strip.to_i - 1
   end
-
+  counter += 1
   # make current player move on board
   # game.player_moves(move)
   #--------------------------------------------------------------------------
 
   game_finish = [false, true].sample # game_finish variable for testing functionality
   tie = [true, false].sample
-  if game_finish and tie
+  if game_finish and tie and counter >= 7
     puts "it's a tie"
     game_start = false
-  elsif game_finish and !tie
+  elsif game_finish and !tie and counter >= 7
     puts "the winner is #{current_player}"
     game_start = false
   end
