@@ -56,9 +56,13 @@ while game_start == true
   puts "#{current_player} make your move between 1..9 "
 
   move = gets.strip.to_i - 1
-  move_repeated = false
 
-  until move.between?(0, 9) and !move_repeated
+  # check if the spot of user input is already taken----
+  spot_valid = true
+
+  puts 'position already taken' unless spot_valid
+
+  until move.between?(0, 9) and spot_valid
     puts "Remember it's between 1..9"
     move = gets.strip.to_i - 1
   end
