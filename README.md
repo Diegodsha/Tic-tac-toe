@@ -2,6 +2,22 @@
 
 # Tic-tac-toe game :D
 
+<p align="center">
+    <a href="https://github.com/Diegodsha/Tic-tac-toe/issues">
+    <img src="https://img.shields.io/github/issues-raw/Diegodsha/Tic-tac-toe?style=for-the-badge"
+         alt="Issues">
+     <a href="https://github.com/Diegodsha/Tic-tac-toe/pulls">
+    <img src="https://img.shields.io/github/issues-pr/Diegodsha/Tic-tac-toe?style=for-the-badge"
+         alt="Pull Requests">
+     <a href="https://github.com/Diegodsha/Tic-tac-toe/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Diegodsha/Tic-tac-toe?style=for-the-badge"
+         alt="License">
+     <!-- <a href="https://github.com/Diegodsha/Tic-tac-toe/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Diegodsha/Tic-tac-toe?style=for-the-badge"
+         alt="License">
+     -->
+</p>
+
 ## Super fun multiplayer Tic-tac-toe game ready to play, easy to use, and very very adictive.
 
 ### This is a sneak peak of the game
