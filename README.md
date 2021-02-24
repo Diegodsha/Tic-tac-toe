@@ -3,12 +3,20 @@
 # Tic-tac-toe game :D
 
 ## Super fun multiplayer Tic-tac-toe game ready to play, easy to use, and very very adictive.
+
+### This is a sneak peak of the game
+
 ## Start Screen Shot
+
 ![first](https://user-images.githubusercontent.com/58520480/108917736-0e21f880-75e5-11eb-8f4b-025d7bd78afc.PNG)
 
 ## Winning Screen Shot
+
 ![Win](https://user-images.githubusercontent.com/58520480/108918157-c485dd80-75e5-11eb-9938-834dc67a5230.PNG)
 
+## Draw Screen Shot
+
+![Screenshot from 2021-02-24 09-03-40](https://user-images.githubusercontent.com/70416006/109023849-c2259100-7682-11eb-821f-f875f3b06885.png)
 
 ## Getting Started
 
@@ -27,7 +35,11 @@ To run this programs on your local enviroment, simply follow the steps below:
 - Run `main` and enjoy the game :)
 
 ### Description
-    This is a two player game with three columns and three rows. A player choose a mark of either "X" or "O". A player wins when 3 cells display his mark on a row, column or diagonal. The game is tie or draw if both players fail to get their mark display in a row, column or diagonal and the board becomes full.
+
+    This is a two-player game with three columns and three rows. A player chooses a mark of either "X" or "O".
+    A player wins when 3 cells display his mark on a row, column, or diagonal.
+    The game is a tie or a draw if both players fail to get their mark display
+    in a row, column, or diagonal and the board becomes full.
 
 ### Instructions
 
