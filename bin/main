@@ -1,98 +1,79 @@
 #!/usr/bin/env ruby
-
-# introduction
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
+require_relative '../lib/game_logic'
+require_relative '../lib/player'
 puts 'TIC-TAC-TOE'
 puts "\nWELCOME TO THIS VERY ADDICTIVE AND FUN GAME"
 puts "\nMake shure you have a friend to play with or if you're alone or got no friends it's okay...
 don't cry...... JUST PLAY AND HAVE FUN!"
 
-# player one name and select mark-----------------
 puts "\nPlayer 1, enter your name :"
-player_one = gets.chomp.upcase
+player_one = gets.strip.upcase
 
 puts 'Please choose between X or O'
-mark_one = gets.chomp.upcase
+mark_one = gets.strip.upcase
 
 until %w[X O].include?(mark_one)
-  puts 'Hey! remember is either X or O'
-  mark_one = gets.chomp.upcase
+  puts "\nHey! remember is either X or O"
+  mark_one = gets.strip.upcase
   if mark_one != 'X' && mark_one != 'O'
-    puts "\nOk I\'ll make it easier for you, just use #{%w[X O].sample} :)"
+    puts "\nOk I\'ll make it easier for you, just use X :)"
     mark_one = 'X'
   end
 end
 
-# player two name and default mark
 mark_two = mark_one == 'X' ? 'O' : 'X'
 
 puts "\nPlayer two, enter your name :"
-player_two = gets.chomp.upcase
+player_two = gets.strip.upcase
 
 puts "\n#{player_one} your mark will be #{mark_one}, #{player_two} your mark will be #{mark_two}"
 
-# start the game with an option to reset the game
 puts "\nLet's get ready to rumbleeeee!".upcase
 
-# game = TicTacToe.new(player_one, player_two,mark_one,mark_two)
+player_one = Player.new(player_one, mark_one)
+player_two = Player.new(player_two, mark_two)
+@game = TicTacToe.new(player_one, player_two)
+@game_start = true
 
-current_player = player_one
+puts "\n#{@game.current_player.player} starts the game\n"
 
-puts "\n#{current_player} starts the game"
+@tips = ['--Consider the corners first--', '--Loser pays for the coffee--', "--Keep calm and maybe you'll win--",
+         '--Come on you can do this--', "--The move that you're thinking is not good ... just kidding :P--",
+         '--Time to Beat your opponent--']
 
-game_start = true
+def game_play
+  while @game_start == true
 
-counter = 0
+    puts @game.show_board
 
-while game_start == true
+    puts "\n#{@tips.sample}"
+    puts "\n#{@game.current_player.player} make your move between 1-9\n"
 
-  board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-  puts "#{board[0]} | #{board[1]} | #{board[2]}"
-  puts '-----------'
-  puts "#{board[3]} | #{board[4]} | #{board[5]}"
-  puts '-----------'
-  puts "#{board[6]} | #{board[7]} | #{board[8]}"
-
-  puts "#{current_player} make your move between 1..9 "
-
-  move = gets.strip.to_i - 1
-
-  # check if the spot of user input is already taken----
-  spot_valid = true
-
-  puts 'position already taken' unless spot_valid
-
-  until move.between?(0, 9) and spot_valid
-    puts "Remember it's between 1..9"
     move = gets.strip.to_i - 1
-  end
-  counter += 1
-  # make current player move on board
-  # game.player_moves(move)
-  #--------------------------------------------------------------------------
 
-  game_finish = [false, true].sample # game_finish variable for testing functionality
-  tie = [true, false].sample
-  if game_finish and tie and counter >= 7
-    puts "it's a tie"
-    game_start = false
-  elsif game_finish and !tie and counter >= 7
-    puts "the winner is #{current_player}"
-    game_start = false
-  end
-  # check if game is a tie or end
-  # if game end show noard and winner message
-  # if game tie show board and tie message
-  #-----------------------------------------------------------------------------
+    until move.between?(0, 9) and !@game.spot_taken?(move)
+      puts "\nRemember #{@game.current_player.player} your move should be between 1-9 and on an empty spot"
+      move = gets.strip.to_i - 1
+    end
 
-  # if not change player
-  if current_player == player_one
-    current_player = player_two
-  elsif current_player == player_two
-    current_player = player_one
-  end
-  #-----------------------------------------------------------------------------
-  # option to play again
-  # reset the game if Y
+    @game.moves(move)
 
+    if @game.win_check? && !@game.draw? && @game.game_finish
+      puts "\nCongratulatons Big-Brain #{@game.current_player.player} you WON!!!!"
+      @game_start = false
+      puts @game.show_board
+    elsif @game.draw? && @game.game_finish
+      puts "\nWooo you both are genius the Game is a DRAW"
+      puts "\n Let's play again and see who wins!!"
+      @game_start = false
+      puts @game.show_board
+    elsif !@game.game_finish
+      @game.player_switch
+    end
+
+  end
 end
+
+game_play
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
