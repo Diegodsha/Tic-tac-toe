@@ -1,14 +1,13 @@
+require_relative '../lib/player'
+
 class TicTacToe
   WIN_COMBINATION = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [6, 4, 2], [0, 4, 8]].freeze
-  attr_reader :current_player, :current_mark, :mark_one, :mark_two, :game_finish
+  attr_reader :current_player, :player_one, :player_two, :mark, :game_finish
 
-  def initialize(player_one, player_two, mark_one, mark_two)
+  def initialize(player_one, player_two)
     @player_one = player_one
     @player_two = player_two
-    @mark_one = mark_one
-    @mark_two = mark_two
     @current_player = @player_one
-    @current_mark = @mark_one
     @game_finish = false
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
@@ -26,14 +25,13 @@ class TicTacToe
     WIN_COMBINATION.each do |arr_winner|
       if @board[arr_winner[0]] == @board[arr_winner[1]] && @board[arr_winner[0]] == @board[arr_winner[2]]
         @game_finish = true
-      elsif draw?
-        @game_finish = true
       end
     end
   end
 
   def draw?
-    if @game_finish && @board.all? { |val| val.is_a? String }
+    if @board.all? { |val| val.is_a? String }
+      @game_finish = true
       true
     else
       false
@@ -41,16 +39,13 @@ class TicTacToe
   end
 
   def moves(user_input)
-    @board[user_input] = @current_mark
+    @board[user_input] = current_player.mark
     win_check?
+    draw?
   end
 
   def player_switch
     @current_player = @current_player == @player_one ? @player_two : @player_one
-  end
-
-  def mark_switch
-    @current_mark = @current_mark == @mark_one ? @mark_two : @mark_one
   end
 
   def spot_taken?(user_input)
