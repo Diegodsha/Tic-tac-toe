@@ -48,10 +48,6 @@ class TicTacToe
     @current_player = @current_player == @player_one ? @player_two : @player_one
   end
 
-  # def mark_switch
-  #   @current_mark = @current_mark == @mark_one ? @mark_two : @mark_one
-  # end
-
   def spot_taken?(user_input)
     spot = @board[user_input]
     %w[X O].include?(spot)

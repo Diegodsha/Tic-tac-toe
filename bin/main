@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
 require_relative '../lib/game_logic'
-require_relative "../lib/player"
+require_relative '../lib/player'
 puts 'TIC-TAC-TOE'
 puts "\nWELCOME TO THIS VERY ADDICTIVE AND FUN GAME"
 puts "\nMake shure you have a friend to play with or if you're alone or got no friends it's okay...
@@ -31,8 +31,8 @@ puts "\n#{player_one} your mark will be #{mark_one}, #{player_two} your mark wil
 
 puts "\nLet's get ready to rumbleeeee!".upcase
 
-player_one =Player.new(player_one, mark_one)
-player_two =Player.new(player_two, mark_two)
+player_one = Player.new(player_one, mark_one)
+player_two = Player.new(player_two, mark_two)
 @game = TicTacToe.new(player_one, player_two)
 @game_start = true
 
