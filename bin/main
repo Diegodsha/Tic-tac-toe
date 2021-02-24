@@ -35,43 +35,41 @@ puts "\nLet's get ready to rumbleeeee!".upcase
 puts "\n#{@game.current_player} starts the game\n"
 
 @tips = ['Consider the corners first', 'Loser pays for the coffee', "Keep calm and maybe you'll win",
-  'Come on you can do this', "The move that you're thinking is not good ... just kidding :P",
-  'Time to Beat your opponent']
-  
-  
-  def game_play
+         'Come on you can do this', "The move that you're thinking is not good ... just kidding :P",
+         'Time to Beat your opponent']
 
+def game_play
   while @game_start == true
-    
-  puts @game.show_board
-  
-  puts "\n#{@tips.sample}"
-  puts "\n#{@game.current_player} make your move between 1-9 "
 
-  move = gets.strip.to_i - 1
+    puts @game.show_board
 
-  until move.between?(0, 9) and !@game.spot_taken?(move)
-    puts "\nRemember #{@game.current_player} your move should be between 1-9"
+    puts "\n#{@tips.sample}"
+    puts "\n#{@game.current_player} make your move between 1-9 "
+
     move = gets.strip.to_i - 1
-  end
 
-  @game.moves(move)
+    until move.between?(0, 9) and !@game.spot_taken?(move)
+      puts "\nRemember #{@game.current_player} your move should be between 1-9"
+      move = gets.strip.to_i - 1
+    end
 
-  if @game.draw? && @game.game_finish
-    puts "\nWooo you are all genius the Game is a DRAW"
-    puts "\n Let's play again and see who wins!!"
-    @game_start = false
-    puts @game.show_board
-  elsif !@game.draw? && @game.game_finish
-    puts "\nCongratulatons Big-Brain #{@game.current_player} you WON!!!!"
-    @game_start = false
-    puts @game.show_board
-  elsif !@game.game_finish
-    @game.player_switch
-    @game.mark_switch
+    @game.moves(move)
+
+    if @game.draw? && @game.game_finish
+      puts "\nWooo you are all genius the Game is a DRAW"
+      puts "\n Let's play again and see who wins!!"
+      @game_start = false
+      puts @game.show_board
+    elsif !@game.draw? && @game.game_finish
+      puts "\nCongratulatons Big-Brain #{@game.current_player} you WON!!!!"
+      @game_start = false
+      puts @game.show_board
+    elsif !@game.game_finish
+      @game.player_switch
+      @game.mark_switch
+    end
+
   end
-  
-end
 end
 
 game_play
