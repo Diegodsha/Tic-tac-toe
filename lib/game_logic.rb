@@ -26,14 +26,13 @@ class TicTacToe
     WIN_COMBINATION.each do |arr_winner|
       if @board[arr_winner[0]] == @board[arr_winner[1]] && @board[arr_winner[0]] == @board[arr_winner[2]]
         @game_finish = true
-      elsif draw?
-        @game_finish = true
       end
     end
   end
 
   def draw?
-    if @game_finish && @board.all? { |val| val.is_a? String }
+    if @board.all? { |val| val.is_a? String }
+      @game_finish = true
       true
     else
       false
@@ -43,6 +42,7 @@ class TicTacToe
   def moves(user_input)
     @board[user_input] = @current_mark
     win_check?
+    draw?
   end
 
   def player_switch
