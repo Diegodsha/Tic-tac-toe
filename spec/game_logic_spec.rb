@@ -7,6 +7,7 @@ describe TicTacToe do
   let(:game) { TicTacToe.new(p1, p2) }
   let(:win_combo) { game.board=["X","X","X",4,5,6,7,8,9]}
   let(:fail_combo) { game.board=["X","0","X",4,5,6,7,8,9]}
+  let(:draw_combo) { game.board= %w(X O X O X O O X O) } 
 
   describe '#show_board' do
     it 'Prints board grid' do
@@ -31,8 +32,24 @@ describe TicTacToe do
     it 'return false if move is not a wining move' do
       fail_combo
       game.win_check?
-      expect(game.game_finish).to eq(false)
+      expect(game.game_finish).to be false
     end
+  end
+
+  describe "#draw?" do
+    it "returns true if game is a draw" do
+        draw_combo
+        game.draw?
+        expect(game.game_finish).to be true
+        
+    end
+
+    it "returns false if game is a draw" do
+        win_combo
+        game.draw?
+        expect(game.game_finish).to be false
+    end
+    
   end
   
 
