@@ -8,6 +8,7 @@ describe TicTacToe do
   let(:win_combo) { game.board=["X","X","X",4,5,6,7,8,9]}
   let(:fail_combo) { game.board=["X","0","X",4,5,6,7,8,9]}
   let(:draw_combo) { game.board= %w(X O X O X O O X O) } 
+  let(:user_input) { 0 }
 
   describe '#show_board' do
     it 'Prints board grid' do
@@ -54,14 +55,14 @@ describe TicTacToe do
   
   describe '#moves' do
     it "return the user input into the board" do
-      game.moves(1-1)
+      game.moves(user_input)
       expect(game.board[0]).to  eq('X')
     end
     it "return false when the user move is not a draw" do
-      expect(game.moves(1-1)).to be false
+      expect(game.moves(user_input)).to be false
     end
     it "game_finish is false when move is not a wining move" do
-      game.moves(1-1)
+      game.moves(user_input)
       expect(game.game_finish).to be false
     end
   end
@@ -70,11 +71,24 @@ describe TicTacToe do
     it "Switch player every turn" do
         expect(game.current_player).to eq(p1)
         game.player_switch
-        expect(game.current_player).to eq(p1)
+        expect(game.current_player).to eq(p2)
     end
-    
-      
   end
+
+  describe 'spot_taken?' do
+    it 'return true if the spot is taken on the game board' do
+      
+      game.moves(user_input)
+      game.player_switch
+      game.moves(user_input)
+        expect(game.spot_taken?(user_input)).to be true
+    end
+    it 'return false if the sport is not taken on the game board' do
+      game.moves(user_input) #player input token  first position
+      expect(game.spot_taken?(1)).to be false
+    end
+  end
+
   
  
 end
