@@ -21,15 +21,15 @@ describe TicTacToe do
   end
 
   describe '#wincheck?' do
-    it 'returns false if move is not a wining move' do
+    it 'returns false if combination is not a wining combination' do
       expect(game.game_finish).to eq(false)
     end
-    it 'return true if move is a wining move' do
+    it 'return true if combination is a wining combination' do
       win_combo #set the wining combo
       game.win_check? #Change game_finish to true if win_combo is wining combination
       expect(game.game_finish).to eq(true)
     end
-    it 'return false if move is not a wining move' do
+    it 'return false if combination is not a wining combination' do
       fail_combo
       game.win_check?
       expect(game.game_finish).to be false
@@ -66,5 +66,15 @@ describe TicTacToe do
     end
   end
 
+  describe "#player_switch" do
+    it "Switch player every turn" do
+        expect(game.current_player).to eq(p1)
+        game.player_switch
+        expect(game.current_player).to eq(p1)
+    end
+    
+      
+  end
+  
  
 end
