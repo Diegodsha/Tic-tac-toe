@@ -52,6 +52,19 @@ describe TicTacToe do
     
   end
   
+  describe '#moves' do
+    it "return the user input into the board" do
+      game.moves(1-1)
+      expect(game.board[0]).to  eq('X')
+    end
+    it "return false when the user move is not a draw" do
+      expect(game.moves(1-1)).to be false
+    end
+    it "game_finish is false when move is not a wining move" do
+      game.moves(1-1)
+      expect(game.game_finish).to be false
+    end
+  end
 
  
 end
