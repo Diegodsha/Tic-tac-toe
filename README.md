@@ -55,14 +55,21 @@ To run this programs on your local enviroment, simply follow the steps below:
 
 ### Instructions
 
-*The first player enters a name and selects either 'X' or 'O'
-*The second player is automatically assigned the other marker after they enter a name
-*Each player has to select an available position on the display grid for their marker.
-*Enter the number visible on the grid to place your marker.
-*Once a number is selected hit Enter & X / O will appear on the board
-*Players take turns selecting their preferred positions to make a winning move
-\*The game ends when one of the players gets a full row, column or diagonal line with his mark or
-in a tie if both players cannot win and the borad is full.
+- The first player enters a name and selects either 'X' or 'O'
+- The second player is automatically assigned the other marker after they enter a name
+- Each player has to select an available position on the display grid for their marker.
+- Enter the number visible on the grid to place your marker.
+- Once a number is selected hit Enter & X / O will appear on the board
+- Players take turns selecting their preferred positions to make a winning move
+- The game ends when one of the players gets a full row, column or diagonal line with his mark or
+  in a tie if both players cannot win and the borad is full.
+
+### Testing
+
+- With RSPEC
+
+To test this wonderful game you need to install rspec gem with this command `gem install rspec`
+then simply run `rspec` command in your terminal and tests will run (You need to cd into the game folder to run tests)
 
 ## Built With
 
