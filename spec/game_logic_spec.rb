@@ -1,5 +1,5 @@
-require './lib/game_logic'
-require './lib/player'
+require_relative '../lib/game_logic'
+require_relative '../lib/player'
 
 describe TicTacToe do
   let(:p1) { Player.new('Eduardo', 'X') }
